@@ -1,0 +1,55 @@
+# -----------------------------------
+# Maven / Gradle build
+# -----------------------------------
+target/
+build/
+out/
+
+# Ignore gradle wrapper cache
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# -----------------------------------
+# IDEs
+# -----------------------------------
+
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# -----------------------------------
+# Logs & Temp
+# -----------------------------------
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Spring Boot dev output
+*.db
+*.h2.db
+*.mv.db
+*.derby.db
+
+# -----------------------------------
+# OS Files
+# -----------------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------------
+# Other
+# -----------------------------------
+# Environment & security
+*.env
+application-*.yml
+application-*.properties
+secret.*
+
+*.mvn
+mvnw
+mvnw.cmd
+HELP.md
