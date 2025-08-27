@@ -36,4 +36,8 @@ public class PersonService {
 		person.setAge(personDetails.getAge());
 		return personRepo.save(person);
 	}
+	
+	public List<Person> getPersonByName(String name) {
+		return personRepo.findByNameContainingIgnoreCase(name);
+	}
 }

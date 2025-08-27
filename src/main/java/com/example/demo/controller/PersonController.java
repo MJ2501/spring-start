@@ -46,5 +46,10 @@ public class PersonController {
 	public void deletePerson(@PathVariable Long id) {
 		personService.deletePerson(id);
 	}
+	
+	@GetMapping("/name/{name}")
+	public List<Person> getPersonByName(@PathVariable String name){
+		return personService.getPersonByName(name);
+	}
 		
 }
