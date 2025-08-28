@@ -53,3 +53,5 @@ secret.*
 mvnw
 mvnw.cmd
 HELP.md
+.vscode/settings.json
+.vscode/launch.json

@@ -23,41 +23,42 @@ import jakarta.persistence.EntityNotFoundException;
 @RestController
 @RequestMapping("/api/persons")
 public class PersonController {
-	
+
 	@Autowired
 	private PersonService personService;
-	
+
 	@Autowired
 	private MessageSource messageSource;
-	
+
 	@GetMapping
 	public List<Person> getAllPersons() {
 		return personService.getAllPersons();
 	}
-	
+
 	@GetMapping("/{id}")
 	public Person getPersonById(@PathVariable Long id) {
-		return personService.getPersonById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No user found with id " + id));
+		return personService.getPersonById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				messageSource.getMessage("user.not.found", new Object[] { id }, null)));
 	}
-	
+
 	@PostMapping
 	public Person createPerson(@RequestBody Person person) {
 		return personService.savePerson(person);
 	}
-	
+
 	@PutMapping("/{id}")
 	public Person updatePerson(@PathVariable Long id, @RequestBody Person person) {
 		return personService.updatePerson(id, person);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void deletePerson(@PathVariable Long id) {
 		personService.deletePerson(id);
 	}
-	
+
 	@GetMapping("/name/{name}")
-	public List<Person> getPersonByName(@PathVariable String name){
+	public List<Person> getPersonByName(@PathVariable String name) {
 		return personService.getPersonByName(name);
 	}
-		
+
 }
