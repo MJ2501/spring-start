@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -26,8 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.model.Person;
-import com.example.demo.service.ApiResponse;
 import com.example.demo.service.PersonService;
+import com.example.demo.utilities.ApiResponse;
 
 @RestController
 @RequestMapping("/api/persons")
@@ -39,9 +40,18 @@ public class PersonController {
 	@Autowired
 	private MessageSource messageSource;
 	
+//	@GetMapping
+//	public List<Person> getAllPersons() {
+//		return personService.getAllPersons();
+//	}
+	
 	@GetMapping
-	public List<Person> getAllPersons() {
-		return personService.getAllPersons();
+	public ResponseEntity<List<Person>> getAllPersons(){
+		List<Person> person = personService.getAllPersons();
+		if(person.isEmpty())
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		else
+			return ResponseEntity.ok(person);
 	}
 
 //	@GetMapping("/{id}")
